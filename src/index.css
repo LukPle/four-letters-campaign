@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Avenir";
+  src: url("./assets/fonts/Avenir-Roman.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "Avenir";
+  src: url("./assets/fonts/Avenir-Oblique.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "Avenir";
+  src: url("./assets/fonts/Avenir-Heavy.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "Avenir";
+  src: url("./assets/fonts/Avenir-HeavyOblique.woff2") format("woff2");
+  font-weight: 600;
+  font-style: italic;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "Avenir";
+  src: url("./assets/fonts/Avenir-Black.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "Avenir";
+  src: url("./assets/fonts/Avenir-BlackOblique.woff2") format("woff2");
+  font-weight: 700;
+  font-style: italic;
+  font-display: block;
+}
+
+:root {
+  --cdtm-brand-blue: #0d4da1;
+  --cdtm-accent-lime: #b0d243;
+  --cdtm-vivid-blue: #2b7fee;
+  --cdtm-deep-navy: #0a3d7f;
+  --cdtm-sky-tint: #92bef6;
+  --cdtm-pale-blue: #b8d4f9;
+  --cdtm-ice-blue: #f1f6fe;
+  --cdtm-lavender: #c4b5fd;
+  --cdtm-blush-pink: #f9a8d4;
+  --cdtm-zinc-gray-mid: #a1a1aa;
+  --cdtm-zinc-gray-light: #e4e4e7;
+  --cdtm-black: #000000;
+  --cdtm-white: #ffffff;
+
+  --cdtm-font-brand: "Avenir", "Inter", "Manrope", system-ui, sans-serif;
+  --cdtm-weight-body: 400;
+  --cdtm-weight-emphasis: 600;
+  --cdtm-weight-display: 700;
+}
+
+@theme {
+  --font-sans: var(--cdtm-font-brand);
+  --color-cdtm-brand: var(--cdtm-brand-blue);
+  --color-cdtm-lime: var(--cdtm-accent-lime);
+  --color-cdtm-vivid: var(--cdtm-vivid-blue);
+  --color-cdtm-navy: var(--cdtm-deep-navy);
+  --color-cdtm-sky: var(--cdtm-sky-tint);
+  --color-cdtm-pale: var(--cdtm-pale-blue);
+  --color-cdtm-ice: var(--cdtm-ice-blue);
+  --color-cdtm-lavender: var(--cdtm-lavender);
+  --color-cdtm-blush: var(--cdtm-blush-pink);
+  --color-cdtm-zinc-mid: var(--cdtm-zinc-gray-mid);
+  --color-cdtm-zinc-light: var(--cdtm-zinc-gray-light);
+}
+
+body {
+  margin: 0;
+  background: var(--cdtm-white);
+  color: var(--cdtm-black);
+  font-family: var(--cdtm-font-brand);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
