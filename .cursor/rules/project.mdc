@@ -1,0 +1,62 @@
+---
+description: What this project is about
+alwaysApply: true
+---
+
+# Project
+
+**Four Letters** is a marketing landing page for [CDTM](https://www.cdtm.com/). It targets **LMU students** with stories of LMU and CDTM alumni who have accomplished inspiring things. The name refers to the four letters **C-D-T-M**.
+
+The general message is that these people studied at LMU, proceeded to CDTM, and do great things nowadays. Simple to understand and relatable for students from LMU.
+
+Language: **English**.
+
+## What to build
+
+One page, three sections, in this order:
+
+1. **Hero** — first interaction point and eye-catcher. Ensure high fidelity here.
+2. **Alumni stories** — the core. Display them well, don't invent people or facts.
+3. **CTA** — send people toward CDTM (apply / learn more). Don't invent the URL.
+
+No extra sections, nav complexity, or pages unless asked. Footer/legal (Impressum, privacy): **ask** before omitting or writing copy — don't guess German legal requirements.
+
+## Brand vs. This Page
+
+[cdtm.com](https://www.cdtm.com/) is the source for **colors, type, logos, and CDTM's message**. It is **not** a layout, component, or interaction spec. This campaign is separate and may be more editorial and motion-heavy. Do not recreate the main site's sections, emoji feature grid, partner-logo wall, or Munich/Valencia split unless asked.
+
+Tokens, type, and font files: `docs/brand.md`. Read it before visual work.
+
+## Stack
+
+Vite + React + TypeScript + Tailwind CSS. Icons: **Phosphor** (`@phosphor-icons/react`) only. **No tests.**
+
+Use the current official Vite + Tailwind scaffold for starting. After scaffold: delete demo widgets/CSS and keep the tree flat.
+
+Stated defaults: **npm**; `index.html` `lang="en"`; light page, no theme toggle.
+
+Do not add libraries until needed. Then suggest and wait. Do not add by default: React Router, Redux/Zustand, MUI/shadcn, Framer Motion, i18n, CMS, analytics, test runners.
+
+## Structure (target after scaffold)
+
+Keep it minimal. Do not create `hooks/`, `utils/`, `lib/`, `context/`, or `ui/` until something real lives there.
+
+```
+index.html
+src/
+  main.tsx
+  App.tsx
+  index.css          ← tokens, @font-face, Tailwind
+  components/        ← Hero, Stories, Cta — add the file when building that section
+  data/stories.ts    ← only once real story content exists
+  assets/            ← logos, fonts, images
+```
+
+## Copy and Facts
+
+- Don't invent alumni names, quotes, employers, photos, or bios.
+- Don't invent CTA destinations or legal text.
+- Don't paste cdtm.com marketing blocks as this page's voice.
+- Placeholder copy only if the user asks — mark it as placeholder.
+
+Open until provided: story roster, hero concept, CTA URL, photos, footer/legal.

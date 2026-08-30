@@ -1,0 +1,32 @@
+---
+description: The visual identity of the campaign page
+alwaysApply: true
+---
+
+# Design
+
+This page should be a stunning yet short landingage for the marketing campaign. The brand should be undoubtly CDTM with high-finish, eye-catching, and storytelling touches. Details in `docs/brand.md`.
+
+## Tokens (non-negotiable)
+
+- Font: **Avenir**. Weights **400 / 600 / 700** only (`font-normal` / `font-semibold` / `font-bold`).
+- Body 400, labels/buttons/subheads 600, large display 700. Tailwind `italic` loads the Oblique files (registered as `italic`). Don't use heavy italic unless we mean it.
+- Primary `#0D4DA1`. Lime `#B0D243` is an **accent**, never body text. Ice `#F1F6FE` for cool surfaces. Neutrals from the zinc/black/white set.
+
+## Quality
+
+- Type-led. Generous space. One `h1`. Display sizes should feel campaign-scale on desktop and readable on a phone.
+- Effects (scroll, letter play, hover) should earn their keep. One strong idea in the hero beats decoration in every section.
+- High-finish and details matter. This should be no standard page, the quality of the program needs to be visible on the site as well.
+- Storytelling is key. The design is not only responsible for making the page look "good", it should strongly assist in telling the story of the campaign.
+- Contrast on text and buttons. Primary actions: brand blue, not lime-on-white.
+- Every layout works from ~375px to desktop. Touch targets ~44px. Don't hide a whole section behind hover.
+- Light page. No theme toggle.
+
+## Logos and media
+
+Use the provided CDTM and LMU SVGs. Don't recreate the wordmark in CSS. Alumni images only when provided, real `alt` text, no generated fake portraits.
+
+## Freedom
+
+Unusual story layout and stronger motion are in scope if they stay on-token and on-message.

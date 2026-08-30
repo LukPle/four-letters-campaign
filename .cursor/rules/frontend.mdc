@@ -1,0 +1,53 @@
+---
+description: Frontend conventions for the campaign page
+alwaysApply: true
+---
+
+# Frontend
+
+Functional components. TypeScript **strict**. No `any`.
+
+## Components
+
+- One component per section file. `App.tsx` composes them. No layout framework.
+- Extract a child only when it clarifies the parent or is used twice.
+- Stories: a typed array in `src/data/stories.ts` once content exists — not hardcoded JSX blobs, not a mini-CMS.
+- No React Router, global state, or context for this page.
+
+## Tailwind
+
+- Utility classes in JSX. `index.css` holds `@font-face`, CSS variables, and Tailwind entry — not a second stylesheet per component.
+- Colors and weights come from CDTM tokens (`docs/brand.md`). No raw hex in components. Set `font-sans` (Avenir) on `body` once. No `font-medium`, `font-extrabold`, or `font-black`.
+- Mobile-first. `sm` / `md` / `lg` as needed. No breakpoint soup. No horizontal scroll.
+
+## Icons
+
+```tsx
+import { ArrowRight } from "@phosphor-icons/react";
+
+<ArrowRight size={24} weight="regular" />
+```
+
+Phosphor only. Default `weight="regular"`. `currentColor`. Don't mix in Lucide, Heroicons, or SVGs-as-icons unless it's a CDTM logo asset.
+
+## Motion
+
+CSS / Tailwind first (`transition`, `@media (prefers-reduced-motion: reduce)`). A motion library only after suggesting it and getting a yes.
+
+## Don't
+
+Wrong: raw hex, unshipped weight, extra icon pack.
+
+```tsx
+<h1 className="text-[#0D4DA1] font-extrabold">Four Letters</h1>
+import { ArrowRight } from "lucide-react";
+```
+
+Right: token class, shipped weight, Phosphor.
+
+```tsx
+<h1 className="text-cdtm-brand font-bold">Four Letters</h1>
+import { ArrowRight } from "@phosphor-icons/react";
+```
+
+Color class names live in `docs/brand.md` (`text-cdtm-brand`, `bg-cdtm-ice`, …). Don't invent a parallel palette.

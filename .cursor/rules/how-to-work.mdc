@@ -1,0 +1,77 @@
+---
+description: Working standards
+alwaysApply: true
+---
+
+# How to Work
+
+## 1. Think Before Coding
+
+Don't assume. Don't hide confusion. Surface tradeoffs.
+
+Before implementing:
+
+- State assumptions explicitly. If uncertain, ask.
+- If multiple interpretations exist, present them. Don't pick silently.
+- If a simpler approach exists, say so. Push back when warranted.
+- If something is unclear, stop. Name what's confusing. Ask.
+
+## 2. Simplicity First
+
+Minimum code that solves the problem. Nothing speculative.
+
+- No features beyond what was asked.
+- No abstractions for single-use code.
+- No "flexibility" or "configurability" that wasn't requested.
+- No error handling for impossible scenarios.
+- If you write 200 lines and it could be 50, rewrite it.
+
+## 3. Comments
+
+Default to **no comments**. Most new code needs none.
+
+- Prefer clear names and structure over commentary.
+- Do not add JSDoc/`/** ... */` on props, fields, or helpers just because they were introduced. If the name is clear, leave it uncommented.
+- No narrating comments (`// increment counter`, `// return the result`, `// focus textarea`).
+- No section banners or decorative comment blocks.
+- Only comment when the **why** is non-obvious and would otherwise be lost: a subtle constraint, a workaround, an invariant, or a deliberate tradeoff. One short line max.
+- Do not leave TODO/FIXME comments unless the user asked for them.
+- Match the existing file: if nearby code is uncommented, keep new code uncommented too. When in doubt, exclude the comment.
+
+## 4. Surgical Changes
+
+Touch only what you must. Clean up only your own mess.
+
+When editing existing code:
+
+- Don't "improve" adjacent code, comments, or formatting.
+- Don't refactor things that aren't broken.
+- Match existing style, even if you'd do it differently.
+- If you notice unrelated dead code, mention it. Don't delete it.
+
+When your changes create orphans:
+
+- Remove imports/variables/functions that **your** changes made unused.
+- Don't remove pre-existing dead code unless asked.
+
+Every changed line should trace directly to the user's request.
+
+## 5. Landing Page Scope vs. Code Quality
+
+This is a 3-section campaign page, not a product. Architecture is not the quality bar — **craft is**.
+
+Hold a high bar for:
+
+- Visual finish (type, color, space, motion, responsive layout)
+- Semantic HTML, contrast, keyboard focus, `prefers-reduced-motion`
+- Strict TypeScript, obvious names, a folder tree you can explain in one breath
+
+Do not spend that bar on:
+
+- Tests (none — no unit, e2e, snapshots, or testing libraries)
+- Routers, stores, UI kits, i18n, CMS, analytics, feature flags
+- Design-system folders or shared primitives used once
+- Error boundaries / loading machines for static content
+- "Future-proof" section APIs
+
+If a best practice adds files without making the page better for a visitor, skip it and say so. When a library would clearly help (motion, etc.), suggest it and wait.
