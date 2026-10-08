@@ -1,23 +1,44 @@
 import { ArrowRight } from '@phosphor-icons/react'
 
+const actionClass =
+  'relative inline-flex h-12 min-h-11 w-full items-center justify-center gap-2 overflow-hidden rounded-xl px-5 font-semibold transition-[transform,box-shadow,background-image,border-color] duration-200 active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:w-auto'
+
 export function Cta() {
   return (
     <section className="flex min-h-svh flex-col justify-end bg-cdtm-brand px-6 pb-12 pt-20 text-white md:px-12 md:pb-16 md:pt-28 lg:pb-20">
       <div className="mx-auto w-full max-w-6xl">
-        <p className="font-semibold">CDTM</p>
-        <h2 className="mt-4 max-w-3xl text-3xl font-bold md:text-5xl">
-          If this path looks like yours, take the next step.
+        <h2 className="max-w-3xl text-3xl font-bold md:text-5xl">
+          You can take a path like theirs.
         </h2>
-        <p className="mt-4 max-w-xl text-lg text-cdtm-pale">
-          CDTM sits next to your degree. See the programme — and how to join.
+        <p className="mt-6 max-w-2xl text-lg text-cdtm-pale md:text-xl">
+          CDTM is an additional master-level programme you take next to your
+          current studies. You keep the degree you already chose. The work is
+          hands-on and focused on trend research, product development, and
+          entrepreneurship.
         </p>
-        <a
-          href="https://www.cdtm.com/"
-          className="mt-10 inline-flex min-h-11 items-center gap-2 bg-white px-6 py-3 font-semibold text-cdtm-brand transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
-        >
-          Explore CDTM
-          <ArrowRight size={24} weight="regular" />
-        </a>
+        <p className="mt-4 max-w-2xl text-lg text-cdtm-pale md:text-xl">
+          People who took that path have built companies, done cutting-edge
+          research, and taken leading positions. CDTM covers what a lecture hall
+          does not. There are hundreds more journeys to explore if you want.
+        </p>
+        <p className="mt-6 max-w-2xl text-lg font-semibold md:text-xl">
+          If this sounds like you, look closer.
+        </p>
+        <div className="mt-10 flex max-w-2xl flex-col gap-3 sm:flex-row sm:items-center">
+          <a
+            href="https://www.cdtm.com/"
+            className={`cta-action text-cdtm-brand ${actionClass}`}
+          >
+            <span>Explore CDTM</span>
+            <ArrowRight size={24} weight="regular" />
+          </a>
+          <a
+            href="https://cdtm-paths.up.railway.app/#hero-section"
+            className={`cta-action-ghost text-white ${actionClass}`}
+          >
+            <span>See More Alumni</span>
+          </a>
+        </div>
       </div>
     </section>
   )

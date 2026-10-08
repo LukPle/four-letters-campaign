@@ -1,97 +1,209 @@
+import { useEffect, useRef } from 'react'
+import {
+  GlobeSimple,
+  InstagramLogo,
+  LinkedinLogo,
+  type Icon,
+} from '@phosphor-icons/react'
 import { stories, type Story } from '../data/stories'
 
-function Path({ stations }: { stations: string[] }) {
-  const lastIndex = stations.length - 1
+function clamp01(n: number) {
+  return Math.min(1, Math.max(0, n))
+}
+
+function smoothstep(p: number, a: number, b: number) {
+  const x = clamp01((p - a) / (b - a))
+  return x * x * (3 - 2 * x)
+}
+
+function writeMotion(chapter: HTMLElement, reduced: boolean) {
+  const rect = chapter.getBoundingClientRect()
+  const vh = window.innerHeight
+  const range = chapter.offsetHeight - vh
+  const p = reduced
+    ? 1
+    : range <= 0
+      ? 1
+      : clamp01(-rect.top / range)
+  const now = smoothstep(p, 0.08, 0.62)
+  const thenDim = smoothstep(p, 0.1, 0.6)
+
+  chapter.style.setProperty('--then-o', String(1 - thenDim * 0.62))
+  chapter.style.setProperty('--now-o', String(now))
+  chapter.style.setProperty('--now-y', `${(1 - now) * 1.15}rem`)
+  chapter.style.setProperty('--photo-y', `${p * -1.25}%`)
+
+  const nowBlock = chapter.querySelector('[data-now]')
+  if (nowBlock instanceof HTMLElement) {
+    nowBlock.inert = now < 0.08
+  }
+}
+
+function StoryLinks({ story }: { story: Story }) {
+  const items: { href: string; label: string; Icon: Icon }[] = []
+
+  if (story.instagram) {
+    items.push({
+      href: story.instagram,
+      label: `${story.name} on Instagram`,
+      Icon: InstagramLogo,
+    })
+  }
+  if (story.linkedin) {
+    items.push({
+      href: story.linkedin,
+      label: `${story.name} on LinkedIn`,
+      Icon: LinkedinLogo,
+    })
+  }
+  if (story.website) {
+    items.push({
+      href: story.website,
+      label: `${story.name} website`,
+      Icon: GlobeSimple,
+    })
+  }
+
+  if (items.length === 0) return null
 
   return (
-    <ol className="mt-12 flex list-none flex-col p-0 lg:flex-row lg:items-start">
-      {stations.map((station, index) => {
-        const last = index === lastIndex
-
-        return (
-          <li
-            key={`${station}-${index}`}
-            className="flex lg:min-w-0 lg:flex-1 lg:flex-col"
+    <ul className="mt-5 flex list-none items-center gap-5 p-0">
+      {items.map(({ href, label, Icon }) => (
+        <li key={label}>
+          <a
+            href={href}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={label}
+            className="inline-flex min-h-11 items-center text-white/70 transition-colors hover:text-cdtm-lime focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
           >
-            <div className="flex flex-col items-center lg:w-full lg:flex-row lg:items-center">
-              <span
-                className={
-                  last
-                    ? 'size-3 shrink-0 rounded-full bg-cdtm-lime'
-                    : 'size-2.5 shrink-0 rounded-full border-2 border-cdtm-brand bg-white'
-                }
-              />
-              {!last && (
-                <span
-                  className="min-h-4 w-px flex-1 bg-cdtm-zinc-light lg:h-px lg:min-h-0 lg:w-auto"
-                  aria-hidden
-                />
-              )}
-            </div>
-            <p
-              className={`pb-6 pl-4 text-sm leading-snug lg:pb-0 lg:pl-0 lg:pr-3 lg:pt-3 ${
-                last
-                  ? 'font-semibold text-cdtm-brand'
-                  : 'text-cdtm-zinc-mid'
-              }`}
-            >
-              {station}
-            </p>
-          </li>
-        )
-      })}
-    </ol>
+            <Icon size={24} weight="regular" />
+          </a>
+        </li>
+      ))}
+    </ul>
   )
 }
 
-function StoryBlock({ story, flip }: { story: Story; flip: boolean }) {
+function StoryChapter({
+  story,
+  flip,
+  layer,
+}: {
+  story: Story
+  flip: boolean
+  layer: number
+}) {
   return (
-    <li
-      className={`flex flex-col gap-10 border-b border-cdtm-zinc-light py-20 last:border-b-0 md:items-stretch md:gap-16 md:py-28 ${
-        flip ? 'md:flex-row-reverse' : 'md:flex-row'
-      }`}
+    <article
+      data-story
+      className="relative -mb-px bg-black last:mb-0 motion-safe:h-[240svh]"
+      style={{ zIndex: layer }}
     >
-      <div className="flex min-h-48 items-end bg-cdtm-ice px-8 py-8 md:min-h-[28rem] md:w-[42%] md:shrink-0 md:px-10 md:py-10">
-        <p className="border-b-4 border-cdtm-lime pb-3 text-7xl font-bold leading-none text-cdtm-brand md:text-8xl lg:text-9xl">
-          {story.id}
-        </p>
-      </div>
+      <div className="relative flex min-h-svh flex-col overflow-hidden motion-safe:sticky motion-safe:top-0 motion-safe:h-svh motion-safe:max-h-svh">
+        <div
+          data-photo={flip ? 'end' : 'start'}
+          className={`absolute inset-0 overflow-hidden bg-cdtm-navy md:inset-auto md:top-0 md:bottom-0 md:w-1/2 ${
+            flip ? 'md:right-0' : 'md:left-0'
+          }`}
+        >
+          <img
+            src={story.portrait}
+            alt={story.portraitAlt}
+            className={`block size-full origin-[center_20%] object-cover object-[center_20%] ${
+              flip
+                ? 'md:origin-[72%_20%] md:object-[72%_20%]'
+                : 'md:origin-[28%_20%] md:object-[28%_20%]'
+            }`}
+          />
+        </div>
 
-      <div className="flex flex-1 flex-col justify-end md:py-4">
-        <p className="text-lg text-cdtm-zinc-mid md:text-2xl">{story.then}</p>
-        <p className="mt-3 text-3xl font-bold leading-[1.1] text-cdtm-brand md:text-5xl">
-          {story.now}
-        </p>
-        <h3 className="mt-10 font-semibold text-black">{story.name}</h3>
-        <Path stations={story.stations} />
+        <div
+          className={`relative z-10 flex min-h-0 flex-1 flex-col justify-end bg-gradient-to-t from-black from-30% via-black/80 via-55% to-transparent px-6 pb-10 pt-8 md:h-full md:w-1/2 md:bg-none md:bg-black md:px-12 md:pb-16 md:pt-12 lg:px-16 lg:pb-20 ${
+            flip ? 'md:self-start' : 'md:self-end'
+          }`}
+        >
+          <p
+            className="text-2xl font-bold leading-[1.1] tracking-tight text-white md:text-4xl lg:text-5xl"
+            style={{ opacity: 'var(--then-o)' }}
+          >
+            {story.then}
+          </p>
+
+          <div
+            data-now
+            style={{
+              opacity: 'var(--now-o)',
+              transform: 'translate3d(0, var(--now-y), 0)',
+            }}
+          >
+            <p className="mt-5 text-2xl font-bold leading-[1.1] tracking-tight text-white md:text-4xl lg:text-5xl">
+              <span aria-hidden className="mb-4 block h-px w-8 bg-cdtm-lime" />
+              {story.now}
+            </p>
+          </div>
+
+          <h2 className="mt-8 text-base font-semibold text-white md:mt-10 md:text-lg">
+            {story.name}
+          </h2>
+          <p className="mt-1 text-sm text-cdtm-zinc-mid md:text-base">
+            {story.role}
+          </p>
+          <StoryLinks story={story} />
+        </div>
       </div>
-    </li>
+    </article>
   )
 }
 
 export function Stories() {
-  return (
-    <section className="bg-white px-6 py-20 md:px-12 md:py-28">
-      <div className="mx-auto max-w-6xl">
-        <p className="font-semibold text-cdtm-brand">Alumni stories</p>
-        <h2 className="mt-4 max-w-3xl text-3xl font-bold text-cdtm-brand md:text-5xl">
-          Same pattern. Six times.
-        </h2>
-        <p className="mt-4 max-w-xl text-lg text-black">
-          Each path starts at LMU, then CDTM. The later stations are
-          placeholders.
-        </p>
+  const sectionRef = useRef<HTMLElement>(null)
 
-        <ul className="mt-8 list-none p-0">
-          {stories.map((story, index) => (
-            <StoryBlock
-              key={story.id}
-              story={story}
-              flip={index % 2 === 1}
-            />
-          ))}
-        </ul>
-      </div>
+  useEffect(() => {
+    const section = sectionRef.current
+    if (!section) return
+
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const chapters = [
+      ...section.querySelectorAll<HTMLElement>('[data-story]'),
+    ]
+    let frame = 0
+
+    const tick = () => {
+      const reduced = motionQuery.matches
+      for (const chapter of chapters) {
+        writeMotion(chapter, reduced)
+      }
+      frame = 0
+    }
+
+    const kick = () => {
+      if (!frame) frame = requestAnimationFrame(tick)
+    }
+
+    kick()
+    window.addEventListener('scroll', kick, { passive: true })
+    window.addEventListener('resize', kick)
+    motionQuery.addEventListener('change', kick)
+
+    return () => {
+      window.removeEventListener('scroll', kick)
+      window.removeEventListener('resize', kick)
+      motionQuery.removeEventListener('change', kick)
+      cancelAnimationFrame(frame)
+    }
+  }, [])
+
+  return (
+    <section ref={sectionRef} className="isolate" aria-label="Alumni stories">
+      {stories.map((story, index) => (
+        <StoryChapter
+          key={story.id}
+          story={story}
+          flip={index % 2 === 1}
+          layer={index + 1}
+        />
+      ))}
     </section>
   )
 }

@@ -69,6 +69,7 @@ Hold a high bar for:
 Do not spend that bar on:
 
 - Tests (none — no unit, e2e, snapshots, or testing libraries)
+- Browser automation or screenshots to check the page. The user reviews it themselves.
 - Routers, stores, UI kits, i18n, CMS, analytics, feature flags
 - Design-system folders or shared primitives used once
 - Error boundaries / loading machines for static content
