@@ -101,6 +101,54 @@ body {
   --photo-y: 0%;
 }
 
+[data-pattern] {
+  --intro: 1;
+  --cdtm: 0;
+  --field: 0;
+  --line: 0;
+}
+
+[data-board] {
+  opacity: var(--field);
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 7%,
+    #000 93%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 7%,
+    #000 93%,
+    transparent
+  );
+}
+
+[data-track="left"] {
+  animation: pattern-crawl 56s linear infinite;
+}
+
+[data-track="right"] {
+  animation: pattern-crawl-rev 68s linear infinite;
+}
+
+@keyframes pattern-crawl {
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes pattern-crawl-rev {
+  from {
+    transform: translate3d(-50%, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
 [data-story] img {
   transform: scale(1.02);
 }
@@ -249,6 +297,17 @@ body {
 
   [data-story] img {
     transform: none;
+  }
+
+  [data-pattern] {
+    --intro: 0;
+    --cdtm: 1;
+    --field: 1;
+    --line: 1;
+  }
+
+  [data-track] {
+    animation: none;
   }
 
   .hero-in,
