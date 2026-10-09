@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { patternTracks } from '../data/pattern'
+import { studyTracks } from '../data/pattern'
 
 function clamp01(n: number) {
   return Math.min(1, Math.max(0, n))
@@ -20,10 +20,17 @@ function writeMotion(section: HTMLElement, reduced: boolean) {
       ? 1
       : clamp01(-rect.top / range)
 
-  section.style.setProperty('--intro', String(1 - smoothstep(p, 0.04, 0.22)))
-  section.style.setProperty('--cdtm', String(smoothstep(p, 0.1, 0.28)))
-  section.style.setProperty('--field', String(smoothstep(p, 0.22, 0.42)))
-  section.style.setProperty('--line', String(smoothstep(p, 0.7, 0.88)))
+  section.style.setProperty('--intro', String(1 - smoothstep(p, 0.04, 0.13)))
+  section.style.setProperty(
+    '--cue',
+    String(smoothstep(p, 0.17, 0.24) * (1 - smoothstep(p, 0.34, 0.42))),
+  )
+  section.style.setProperty('--cdtm', String(smoothstep(p, 0.46, 0.58)))
+  section.style.setProperty('--lift', String(smoothstep(p, 0.64, 0.74)))
+  section.style.setProperty('--line', String(smoothstep(p, 0.7, 0.78)))
+  section.style.setProperty('--field', String(smoothstep(p, 0.76, 0.86)))
+  section.style.setProperty('--quiet', '0')
+  section.style.setProperty('--resolve', String(smoothstep(p, 0.9, 0.96)))
 }
 
 function Track({
@@ -44,7 +51,7 @@ function Track({
             {studies.map((study) => (
               <span
                 key={study}
-                className="shrink-0 text-lg font-semibold tracking-tight text-white/55 md:text-2xl"
+                className="shrink-0 text-base font-semibold tracking-tight text-white/40 md:text-xl"
               >
                 {study}
               </span>
@@ -88,21 +95,21 @@ export function Pattern() {
     }
   }, [])
 
-  const upper = patternTracks.slice(0, 2)
-  const lower = patternTracks.slice(2)
+  const upper = studyTracks.slice(0, 2)
+  const lower = studyTracks.slice(2)
 
   return (
     <section
       ref={sectionRef}
       data-pattern
-      className="relative bg-black motion-safe:h-[300svh]"
+      className="relative bg-black motion-safe:h-[460svh]"
       aria-label="The shared pattern"
     >
       <div className="relative flex min-h-svh flex-col overflow-hidden motion-safe:sticky motion-safe:top-0 motion-safe:h-svh motion-safe:max-h-svh">
-        <div className="relative min-h-0 flex-1 overflow-hidden">
+        <div className="relative min-h-0 flex-1">
           <div
-            data-board
-            className="pointer-events-none absolute inset-x-0 bottom-0 flex flex-col justify-end gap-5 pb-3 md:gap-8 md:pb-5"
+            data-board="upper"
+            className="pointer-events-none absolute inset-x-0 bottom-0 flex flex-col justify-end gap-5 pb-4 md:gap-8 md:pb-6"
             aria-hidden
           >
             {upper.map((track) => (
@@ -111,49 +118,65 @@ export function Pattern() {
           </div>
         </div>
 
-        <div className="relative z-10 shrink-0 px-6 py-7 text-center md:py-10">
-          <div
-            aria-hidden
-            className="pointer-events-none absolute top-1/2 left-1/2 h-28 w-[min(28rem,80vw)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-cdtm-brand/25 blur-3xl md:h-36"
-            style={{ opacity: 'var(--cdtm)' }}
-          />
+        <div className="relative z-10 shrink-0 px-6 py-5 text-center md:py-8">
+          <div className="relative">
+            <div
+              aria-hidden
+              className="pointer-events-none absolute top-0 left-1/2 h-28 w-[min(28rem,80vw)] rounded-full bg-cdtm-brand/25 blur-3xl md:h-36"
+              style={{
+                opacity: 'var(--cdtm)',
+                transform:
+                  'translate(-50%, -20%) translate3d(0, calc((1 - var(--lift)) * 3.1rem), 0)',
+              }}
+            />
 
-          <p
-            className="absolute bottom-full left-1/2 mb-6 w-[min(40rem,92vw)] text-xl font-semibold tracking-tight text-white md:mb-10 md:text-3xl"
-            style={{
-              opacity: 'var(--intro)',
-              transform:
-                'translate3d(-50%, calc((1 - var(--intro)) * -0.4rem), 0)',
-            }}
-          >
-            Every story is different, but they share one pattern.
-          </p>
+            <h2
+              className="relative font-bold leading-none tracking-[0.14em] text-white text-[clamp(3.25rem,15vw,8.5rem)]"
+              style={{
+                opacity: 'var(--cdtm)',
+                transform:
+                  'translate3d(0, calc((1 - var(--lift)) * 3.1rem), 0)',
+              }}
+            >
+              CDTM
+            </h2>
 
-          <h2
-            className="relative font-bold leading-none tracking-[0.14em] text-white text-[clamp(3.25rem,15vw,8.5rem)]"
-            style={{
-              opacity: 'var(--cdtm)',
-              transform: 'translate3d(0, calc((1 - var(--cdtm)) * 1.15rem), 0)',
-            }}
-          >
-            CDTM
-          </h2>
+            <p
+              className="absolute top-1/2 left-1/2 w-[min(40rem,92vw)] text-xl font-semibold tracking-tight text-white md:text-3xl"
+              style={{
+                opacity: 'var(--intro)',
+                transform: 'translate(-50%, -50%)',
+              }}
+            >
+              Every story is different, but they share one pattern.
+            </p>
 
-          <p
-            className="relative mx-auto mt-6 w-[min(36rem,92vw)] text-lg font-semibold tracking-tight text-white md:mt-10 md:text-2xl"
-            style={{
-              opacity: 'var(--line)',
-              transform: 'translate3d(0, calc((1 - var(--line)) * 0.45rem), 0)',
-            }}
-          >
-            CDTM can be combined with any study background.
-          </p>
+            <p
+              className="absolute top-1/2 left-1/2 w-[min(40rem,92vw)] text-xl font-semibold tracking-tight text-white md:text-3xl"
+              style={{
+                opacity: 'var(--cue)',
+                transform: 'translate(-50%, -50%)',
+              }}
+            >
+              One with four letters.
+            </p>
+
+            <p
+              className="relative mx-auto mt-6 w-[min(40rem,92vw)] text-xl font-semibold tracking-tight text-white md:mt-8 md:text-3xl"
+              style={{
+                opacity: 'var(--line)',
+                transform: 'translate3d(0, calc((1 - var(--line)) * 0.55rem), 0)',
+              }}
+            >
+              A program for students from all backgrounds.
+            </p>
+          </div>
         </div>
 
-        <div className="relative min-h-0 flex-1 overflow-hidden">
+        <div className="relative min-h-0 flex-1">
           <div
-            data-board
-            className="pointer-events-none absolute inset-x-0 top-0 flex flex-col justify-start gap-5 pt-3 md:gap-8 md:pt-5"
+            data-board="lower"
+            className="pointer-events-none absolute inset-x-0 top-0 flex flex-col justify-start gap-5 pt-4 md:gap-8 md:pt-6"
             aria-hidden
           >
             {lower.map((track) => (

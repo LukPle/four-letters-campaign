@@ -12,14 +12,14 @@ export function Cta() {
         </h2>
         <p className="mt-6 max-w-2xl text-lg text-cdtm-pale md:text-xl">
           CDTM is an additional master-level programme you take next to your
-          current studies. You keep the degree you already chose. The work is
-          hands-on and focused on trend research, product development, and
-          entrepreneurship.
+          current studies. The coursework is hands-on and focused on trend research,
+          product development, and entrepreneurship.
         </p>
         <p className="mt-4 max-w-2xl text-lg text-cdtm-pale md:text-xl">
-          People who took that path have built companies, done cutting-edge
-          research, and taken leading positions. CDTM covers what a lecture hall
-          does not. There are hundreds more journeys to explore if you want.
+          People who took that path have founded movements, done 
+          research at leading institutions, and built innovative companies. 
+          CDTM covers what a lecture hall does not. There are hundreds more 
+          journeys to explore.
         </p>
         <p className="mt-6 max-w-2xl text-lg font-semibold md:text-xl">
           If this sounds like you, look closer.
@@ -29,14 +29,14 @@ export function Cta() {
             href="https://www.cdtm.com/"
             className={`cta-action text-cdtm-brand ${actionClass}`}
           >
-            <span>Explore CDTM</span>
+            <span>Get to Know CDTM</span>
             <ArrowRight size={24} weight="regular" />
           </a>
           <a
-            href="https://cdtm-paths.up.railway.app/#hero-section"
+            href="https://cdtm-paths.up.railway.app/"
             className={`cta-action-ghost text-white ${actionClass}`}
           >
-            <span>See More Alumni</span>
+            <span>Explore More Alumni Stories</span>
           </a>
         </div>
       </div>

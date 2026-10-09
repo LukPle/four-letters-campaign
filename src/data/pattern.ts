@@ -1,9 +1,9 @@
-export type PatternTrack = {
+export type StudyTrack = {
   dir: 'left' | 'right'
   studies: readonly string[]
 }
 
-export const patternTracks: PatternTrack[] = [
+export const studyTracks: StudyTrack[] = [
   {
     dir: 'left',
     studies: [
