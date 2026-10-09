@@ -195,7 +195,12 @@ export function Stories() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="isolate" aria-label="Alumni stories">
+    <section
+      id="stories"
+      ref={sectionRef}
+      className="isolate"
+      aria-label="Alumni stories"
+    >
       {stories.map((story, index) => (
         <StoryChapter
           key={story.id}

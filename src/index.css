@@ -84,6 +84,10 @@
   --color-cdtm-zinc-light: var(--cdtm-zinc-gray-light);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 html,
 body {
   margin: 0;
@@ -109,13 +113,10 @@ body {
   --lift: 0;
   --line: 0;
   --quiet: 0;
-  --resolve: 0;
 }
 
 [data-board] {
-  opacity: calc(
-    var(--field) * (1 - var(--quiet) * 0.32) * (1 - var(--resolve))
-  );
+  opacity: calc(var(--field) * (1 - var(--quiet) * 0.32));
   -webkit-mask-image: linear-gradient(
     to right,
     transparent,
@@ -214,6 +215,20 @@ body {
 
 .hero-rise-late {
   animation-delay: 0.22s;
+}
+
+.hero-cue {
+  animation: hero-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.7s both;
+}
+
+.hero-scroll {
+  animation: hero-scroll 1.6s ease-in-out infinite alternate;
+}
+
+@keyframes hero-scroll {
+  to {
+    transform: translate3d(0, 0.3rem, 0);
+  }
 }
 
 .cta-action,
@@ -321,7 +336,6 @@ body {
     --lift: 1;
     --line: 1;
     --quiet: 0;
-    --resolve: 0;
   }
 
   [data-track] {
@@ -329,9 +343,15 @@ body {
   }
 
   .hero-in,
-  .hero-rise {
+  .hero-rise,
+  .hero-cue,
+  .hero-scroll {
     animation: none;
     opacity: 1;
     transform: none;
+  }
+
+  html {
+    scroll-behavior: auto;
   }
 }

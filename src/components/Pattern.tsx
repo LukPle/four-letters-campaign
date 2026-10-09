@@ -30,7 +30,6 @@ function writeMotion(section: HTMLElement, reduced: boolean) {
   section.style.setProperty('--line', String(smoothstep(p, 0.7, 0.78)))
   section.style.setProperty('--field', String(smoothstep(p, 0.76, 0.86)))
   section.style.setProperty('--quiet', '0')
-  section.style.setProperty('--resolve', String(smoothstep(p, 0.9, 0.96)))
 }
 
 function Track({
