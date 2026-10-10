@@ -240,8 +240,8 @@ body {
   border: 1px solid var(--cdtm-zinc-gray-light);
   background-image: linear-gradient(
     to bottom,
-    var(--cdtm-white),
-    var(--cdtm-ice-blue)
+    color-mix(in srgb, var(--cdtm-zinc-gray-light) 22%, var(--cdtm-white)),
+    color-mix(in srgb, var(--cdtm-ice-blue) 68%, var(--cdtm-pale-blue))
   );
   box-shadow:
     inset 0 1px 0 color-mix(in srgb, var(--cdtm-white) 90%, transparent),
@@ -251,11 +251,11 @@ body {
 }
 
 .cta-action:hover {
-  border-color: color-mix(in srgb, var(--cdtm-zinc-gray-light) 65%, var(--cdtm-white));
+  border-color: var(--cdtm-white);
   background-image: linear-gradient(
     to bottom,
     var(--cdtm-white),
-    color-mix(in srgb, var(--cdtm-ice-blue) 65%, var(--cdtm-white))
+    color-mix(in srgb, var(--cdtm-ice-blue) 45%, var(--cdtm-white))
   );
 }
 
@@ -301,7 +301,7 @@ body {
 }
 
 .cta-action::before {
-  opacity: 0.15;
+  opacity: 0.2;
 }
 
 .cta-action-ghost::before {

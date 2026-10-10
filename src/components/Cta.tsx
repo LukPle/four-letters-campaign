@@ -14,7 +14,7 @@ export function Cta() {
           You can take a path like theirs.
         </h2>
         <p className="mt-6 max-w-2xl text-lg text-cdtm-pale md:text-xl">
-          CDTM is an additional master-level programme you take next to your
+          CDTM is an additional master-level program you take next to your
           current studies. The coursework is hands-on and focused on trend research,
           product development, and entrepreneurship.
         </p>

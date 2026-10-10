@@ -2,6 +2,7 @@ export type Story = {
   id: string
   name: string
   role: string
+  cdtmClass: string
   then: string
   now: string
   portrait: string
@@ -16,6 +17,7 @@ export const stories: Story[] = [
     id: '01',
     name: 'Thomas Pischke',
     role: 'Co-Founder & CTO, Trade Republic',
+    cdtmClass: 'CDTM Class of Spring 2014',
     then: 'I was studying Physics at LMU',
     now: "Now, I'm building Europe's largest broker bank",
     portrait: '/thomas-pischke.jpeg',
@@ -27,6 +29,7 @@ export const stories: Story[] = [
     id: '02',
     name: 'Judith Dada',
     role: 'Co-CEO, Langdock',
+    cdtmClass: 'CDTM Class of Spring 2014',
     then: 'I was studying Business at LMU',
     now: "Now, I'm scaling the future of European AI",
     portrait: '/judith-dada.webp',
@@ -39,6 +42,7 @@ export const stories: Story[] = [
     id: '03',
     name: 'Maximilian Wühr',
     role: 'Co-Founder & CEO, FINN',
+    cdtmClass: 'CDTM Class of Fall 2016',
     then: 'I was studying Economics at LMU',
     now: "Now, I'm changing how people drive cars",
     portrait: '/maximilian-wuehr.jpeg',
@@ -50,6 +54,7 @@ export const stories: Story[] = [
     id: '04',
     name: 'Julia Bösch',
     role: 'Co-Founder & Board, Lookiero Outfittery Group',
+    cdtmClass: 'CDTM Class of Spring 2006',
     then: 'I was studying Business at LMU',
     now: "Now, I'm reinventing online fashion at scale",
     portrait: '/julia-boesch.jpeg',
@@ -61,6 +66,7 @@ export const stories: Story[] = [
     id: '05',
     name: 'Sebastian Wagner',
     role: 'Co-Founder & CTO, Leegle',
+    cdtmClass: 'CDTM Class of Spring 2012',
     then: 'I was studying Computer Science at LMU',
     now: "Now, I'm shaping how companies stay compliant",
     portrait: '/sebastian-wagner.webp',
@@ -72,6 +78,7 @@ export const stories: Story[] = [
     id: '06',
     name: 'Hanna Renz',
     role: 'Global Director Digital Product, adidas',
+    cdtmClass: 'CDTM Class of Spring 2010',
     then: 'I was studying Political Science at LMU',
     now: "Now, I'm leading digital products for sports",
     portrait: '/hanna-renz.jpeg',

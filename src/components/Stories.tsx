@@ -143,12 +143,15 @@ function StoryChapter({
             </p>
           </div>
 
-          <h2 className="mt-8 text-base font-semibold text-white md:mt-10 md:text-lg">
-            {story.name}
-          </h2>
-          <p className="mt-1 text-sm text-cdtm-zinc-mid md:text-base">
-            {story.role}
-          </p>
+          <div className="mt-8 md:mt-10">
+            <h2 className="text-base font-semibold text-white md:text-lg">
+              {story.name}
+            </h2>
+            <p className="mt-2 text-sm leading-snug text-cdtm-zinc-mid md:text-base">
+              {story.role}
+              <span className="mt-0.5 block">{story.cdtmClass}</span>
+            </p>
+          </div>
           <StoryLinks story={story} />
         </div>
       </div>
