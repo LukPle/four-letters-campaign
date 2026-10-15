@@ -4,8 +4,8 @@ import lmuLogo from '../assets/lmu.svg'
 
 export function Hero() {
   return (
-    <section className="flex min-h-svh flex-col bg-cdtm-brand text-white">
-      <div className="mx-auto flex min-h-svh w-full max-w-6xl flex-col px-6 md:px-12">
+    <section className="cdtm-texture flex min-h-svh flex-col overflow-hidden bg-cdtm-brand text-white">
+      <div className="relative z-10 mx-auto flex min-h-svh w-full max-w-6xl flex-col px-6 md:px-12">
         <header className="flex items-center justify-between gap-6 pt-8 md:pt-10">
           <p className="hero-in flex items-center gap-3">
             <span

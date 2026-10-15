@@ -141,7 +141,7 @@ export function Pattern() {
             </h2>
 
             <p
-              className="absolute top-1/2 left-1/2 w-[min(40rem,92vw)] text-xl font-semibold tracking-tight text-white md:text-3xl"
+              className="absolute top-1/2 left-1/2 w-[min(40rem,92vw)] font-heading text-xl font-bold tracking-tight text-white md:text-3xl"
               style={{
                 opacity: 'var(--intro)',
                 transform: 'translate(-50%, -50%)',
@@ -151,7 +151,7 @@ export function Pattern() {
             </p>
 
             <p
-              className="absolute top-1/2 left-1/2 w-[min(40rem,92vw)] text-xl font-semibold tracking-tight text-white md:text-3xl"
+              className="absolute top-1/2 left-1/2 w-[min(40rem,92vw)] font-heading text-xl font-bold tracking-tight text-white md:text-3xl"
               style={{
                 opacity: 'var(--cue)',
                 transform: 'translate(-50%, -50%)',
@@ -161,7 +161,7 @@ export function Pattern() {
             </p>
 
             <p
-              className="relative mx-auto mt-6 w-[min(40rem,92vw)] text-xl font-semibold tracking-tight text-white md:mt-8 md:text-3xl"
+              className="relative mx-auto mt-6 w-[min(40rem,92vw)] font-heading text-xl font-bold tracking-tight text-white md:mt-8 md:text-3xl"
               style={{
                 opacity: 'var(--line)',
                 transform: 'translate3d(0, calc((1 - var(--line)) * 0.55rem), 0)',

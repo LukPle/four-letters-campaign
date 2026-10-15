@@ -9,9 +9,11 @@ This page should be a stunning yet short landingage for the marketing campaign. 
 
 ## Tokens (non-negotiable)
 
-- Font: **Avenir**. Weights **400 / 600 / 700** only (`font-normal` / `font-semibold` / `font-bold`).
-- Body 400, labels/buttons/subheads 600, large display 700. Tailwind `italic` loads the Oblique files (registered as `italic`). Don't use heavy italic unless we mean it.
-- Primary `#0D4DA1`. Lime `#B0D243` is an **accent**, never body text. Ice `#F1F6FE` for cool surfaces. Neutrals from the zinc/black/white set.
+- Headlines: **Montserrat** (`font-heading`, 700 / `font-bold`). Body and UI: **Inter** (`font-sans`, 400 / 600).
+- Weights **400 / 600 / 700** (`font-normal` / `font-semibold` / `font-bold`). No `font-extrabold` or `font-black`.
+- Palette: main blue `#004EA8` (`cdtm-brand`), light blue `#91BEFF` (`cdtm-blue-light`), neutral `#E1F5FE` (`cdtm-neutral`), main green `#0F4C2D` (`cdtm-green`), light green `#5BA55A` (`cdtm-green-light`). Black / white as-is. Muted `#A1A1AA` (`cdtm-zinc-mid`) for secondary type on black.
+- Light green is an **accent**, never body text. Neutral for cool light surfaces. Primary actions: main blue, not green-on-white.
+- Paper grain: `src/assets/texture.jpg` + `.cdtm-texture` on a token fill (hero). CTA: `.cta-wash` (brand / light blue / neutral atmosphere), no grain. Don't invent a second noise recipe.
 
 ## Quality
 
@@ -19,7 +21,7 @@ This page should be a stunning yet short landingage for the marketing campaign. 
 - Effects (scroll, letter play, hover) should earn their keep. One strong idea in the hero beats decoration in every section.
 - High-finish and details matter. This should be no standard page, the quality of the program needs to be visible on the site as well.
 - Storytelling is key. The design is not only responsible for making the page look "good", it should strongly assist in telling the story of the campaign.
-- Contrast on text and buttons. Primary actions: brand blue, not lime-on-white.
+- Contrast on text and buttons. Primary actions: brand blue, not light-green-on-white.
 - Every layout works from ~375px to desktop. Touch targets ~44px. Don't hide a whole section behind hover.
 - Light page. No theme toggle.
 

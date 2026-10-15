@@ -16,8 +16,8 @@ Functional components. TypeScript **strict**. No `any`.
 
 ## Tailwind
 
-- Utility classes in JSX. `index.css` holds `@font-face`, CSS variables, and Tailwind entry — not a second stylesheet per component.
-- Colors and weights come from CDTM tokens (`docs/brand.md`). No raw hex in components. Set `font-sans` (Avenir) on `body` once. No `font-medium`, `font-extrabold`, or `font-black`.
+- Utility classes in JSX. `index.css` holds `@font-face` (via fontsource), CSS variables, texture, and Tailwind entry — not a second stylesheet per component.
+- Colors and type come from CDTM tokens (`docs/brand.md`). No raw hex in components. Set `font-sans` (Inter) on `body` once. Headings are Montserrat (`font-heading` / element defaults). No `font-extrabold` or `font-black`.
 - Mobile-first. `sm` / `md` / `lg` as needed. No breakpoint soup. No horizontal scroll.
 
 ## Icons
@@ -28,7 +28,7 @@ import { ArrowRight } from "@phosphor-icons/react";
 <ArrowRight size={24} weight="regular" />
 ```
 
-Phosphor only. Default `weight="regular"`. `currentColor`. Don't mix in Lucide, Heroicons, or SVGs-as-icons unless it's a CDTM logo asset.
+Phosphor only (`@phosphor-icons/react`). Default `weight="regular"`. `currentColor`. Don't mix in Lucide, Heroicons, or SVGs-as-icons unless it's a CDTM logo asset.
 
 ## Motion
 
@@ -39,7 +39,7 @@ CSS / Tailwind first (`transition`, `@media (prefers-reduced-motion: reduce)`). 
 Wrong: raw hex, unshipped weight, extra icon pack.
 
 ```tsx
-<h1 className="text-[#0D4DA1] font-extrabold">Four Letters</h1>
+<h1 className="text-[#004EA8] font-extrabold">Four Letters</h1>
 import { ArrowRight } from "lucide-react";
 ```
 
@@ -50,4 +50,4 @@ Right: token class, shipped weight, Phosphor.
 import { ArrowRight } from "@phosphor-icons/react";
 ```
 
-Color class names live in `docs/brand.md` (`text-cdtm-brand`, `bg-cdtm-ice`, …). Don't invent a parallel palette.
+Color class names live in `docs/brand.md` (`text-cdtm-brand`, `bg-cdtm-neutral`, …). Don't invent a parallel palette (`cdtm-ice`, `cdtm-lime`, …).

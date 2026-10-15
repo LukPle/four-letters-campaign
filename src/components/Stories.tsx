@@ -75,7 +75,7 @@ function StoryLinks({ story }: { story: Story }) {
             target="_blank"
             rel="noreferrer"
             aria-label={label}
-            className="inline-flex min-h-11 items-center text-white/70 transition-colors hover:text-cdtm-lime focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            className="inline-flex min-h-11 items-center text-white/70 transition-colors hover:text-cdtm-green-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
           >
             <Icon size={24} weight="regular" />
           </a>
@@ -103,7 +103,7 @@ function StoryChapter({
       <div className="relative flex min-h-svh flex-col overflow-hidden motion-safe:sticky motion-safe:top-0 motion-safe:h-svh motion-safe:max-h-svh">
         <div
           data-photo={flip ? 'end' : 'start'}
-          className={`absolute inset-0 overflow-hidden bg-cdtm-navy md:inset-auto md:top-0 md:bottom-0 md:w-1/2 ${
+          className={`absolute inset-0 overflow-hidden bg-cdtm-brand md:inset-auto md:top-0 md:bottom-0 md:w-1/2 ${
             flip ? 'md:right-0' : 'md:left-0'
           }`}
         >
@@ -124,7 +124,7 @@ function StoryChapter({
           }`}
         >
           <p
-            className="text-2xl font-bold leading-[1.1] tracking-tight text-white md:text-4xl lg:text-5xl"
+            className="font-heading text-2xl font-bold leading-[1.1] tracking-tight text-white md:text-4xl lg:text-5xl"
             style={{ opacity: 'var(--then-o)' }}
           >
             {story.then}
@@ -137,8 +137,8 @@ function StoryChapter({
               transform: 'translate3d(0, var(--now-y), 0)',
             }}
           >
-            <p className="mt-5 text-2xl font-bold leading-[1.1] tracking-tight text-white md:text-4xl lg:text-5xl">
-              <span aria-hidden className="mb-4 block h-px w-8 bg-cdtm-lime" />
+            <p className="mt-5 font-heading text-2xl font-bold leading-[1.1] tracking-tight text-white md:text-4xl lg:text-5xl">
+              <span aria-hidden className="mb-4 block h-px w-8 bg-cdtm-green-light" />
               {story.now}
             </p>
           </div>
