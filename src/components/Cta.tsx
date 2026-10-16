@@ -1,5 +1,5 @@
 import { useRef, type MouseEvent, type ReactNode } from 'react'
-import { ArrowRight, X } from '@phosphor-icons/react'
+import { ArrowRightIcon, X } from '@phosphor-icons/react'
 
 const actionClass =
   'relative inline-flex h-12 min-h-11 w-full items-center justify-center gap-2 overflow-hidden rounded-xl px-5 font-semibold transition-[transform,box-shadow,background-image,border-color] duration-200 active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:w-auto'
@@ -11,11 +11,6 @@ const dialogClass =
   'fixed top-1/2 left-1/2 m-0 w-[calc(100%-2rem)] max-w-md -translate-x-1/2 -translate-y-1/2 rounded-2xl border-0 bg-white p-0 text-black shadow-lg backdrop:bg-cdtm-brand/55'
 
 const emphasisClass = 'cta-emphasis font-semibold'
-
-const photoConsents = [
-  { name: 'Judith Dada', date: '2026-08-13', label: '13. Aug 2026' },
-  { name: 'Sebastian Wagner', date: '2026-08-14', label: '14. Aug 2026' },
-] as const
 
 function closeIfBackdrop(event: MouseEvent<HTMLDialogElement>) {
   const dialog = event.currentTarget
@@ -109,7 +104,7 @@ export function Cta() {
               className={`cta-action text-cdtm-brand ${actionClass}`}
             >
               <span>Get to Know CDTM</span>
-              <ArrowRight size={24} weight="regular" />
+              <ArrowRightIcon size={24} weight="regular" />
             </a>
             <a
               href="https://cdtm-paths.up.railway.app/"
@@ -125,8 +120,8 @@ export function Cta() {
               </h3>
               <address className="mt-4 not-italic text-sm leading-relaxed">
                 <p>Lukas Plenk</p>
-                <p>on behalf of the Marketing & Diversity Taskforce</p>
-                <p>Center for Digital Technology & Management (CDTM)</p>
+                <p>on behalf of the Marketing and Diversity Taskforce</p>
+                <p>Center for Digital Technology and Management (CDTM)</p>
                 <p className="mt-3">
                   Marsstraße 20–22
                   <br />
@@ -168,26 +163,10 @@ export function Cta() {
             <LegalNotice label="Photo Rights" titleId="photo-rights-title">
               <h3 className="mt-1 text-sm">Consent</h3>
               <p className="mt-4 text-sm leading-relaxed">
-                Each person listed here has approved being featured in this campaign,
-                including the rights to use their portrait.
+                Each person featured on this page has approved being part of this
+                campaign, including the use of their portrait. The approval covers
+                the photograph, name, and story shown with them.
               </p>
-              <h3 className="mt-6 text-sm">Date of approval</h3>
-              <ul className="mt-3 space-y-3 text-sm leading-relaxed">
-                {photoConsents.map((person) => (
-                  <li
-                    key={person.name}
-                    className="flex flex-row items-baseline justify-between gap-4"
-                  >
-                    <span>{person.name}</span>
-                    <time
-                      dateTime={person.date}
-                      className="shrink-0 text-black/50 tabular-nums"
-                    >
-                      {person.label}
-                    </time>
-                  </li>
-                ))}
-              </ul>
             </LegalNotice>
           </div>
         </div>

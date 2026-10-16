@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react'
 import {
-  GlobeSimple,
-  InstagramLogo,
-  LinkedinLogo,
+  GlobeSimpleIcon,
+  InstagramLogoIcon,
+  LinkedinLogoIcon,
   type Icon,
 } from '@phosphor-icons/react'
 import { stories, type Story } from '../data/stories'
@@ -46,21 +46,21 @@ function StoryLinks({ story }: { story: Story }) {
     items.push({
       href: story.instagram,
       label: `${story.name} on Instagram`,
-      Icon: InstagramLogo,
+      Icon: InstagramLogoIcon,
     })
   }
   if (story.linkedin) {
     items.push({
       href: story.linkedin,
       label: `${story.name} on LinkedIn`,
-      Icon: LinkedinLogo,
+      Icon: LinkedinLogoIcon,
     })
   }
   if (story.website) {
     items.push({
       href: story.website,
       label: `${story.name} website`,
-      Icon: GlobeSimple,
+      Icon: GlobeSimpleIcon,
     })
   }
 

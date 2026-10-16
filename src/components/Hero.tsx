@@ -1,4 +1,4 @@
-import { ArrowDown } from '@phosphor-icons/react'
+import { ArrowDownIcon } from '@phosphor-icons/react'
 import cdtmLogo from '../assets/cdtm.svg'
 import lmuLogo from '../assets/lmu.svg'
 
@@ -63,7 +63,7 @@ export function Hero() {
             aria-label="Scroll to stories"
             className="hero-cue inline-flex min-h-11 min-w-11 items-center justify-center text-white/80 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
           >
-            <ArrowDown size={22} weight="regular" className="hero-scroll" />
+            <ArrowDownIcon size={22} weight="regular" className="hero-scroll" />
           </a>
         </div>
       </div>
