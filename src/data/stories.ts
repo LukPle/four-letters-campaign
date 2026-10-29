@@ -13,7 +13,7 @@ export type Story = {
 }
 
 export const stories: Story[] = [
-  {
+  /**{
     id: '01',
     name: 'Thomas Pischke',
     role: 'Co-Founder & CTO, Trade Republic',
@@ -24,7 +24,7 @@ export const stories: Story[] = [
     portraitAlt: 'Thomas Pischke',
     linkedin: 'https://www.linkedin.com/in/tpischke',
     website: 'https://traderepublic.com/en-de',
-  },
+  },**/
   {
     id: '02',
     name: 'Judith Dada',
@@ -74,7 +74,7 @@ export const stories: Story[] = [
     linkedin: 'https://www.linkedin.com/in/sebastiantimwagner',
     website: 'https://www.leegle.ai',
   },
-  {
+  /**{
     id: '06',
     name: 'Hanna Renz',
     role: 'Global Director Digital Product, adidas',
@@ -84,5 +84,5 @@ export const stories: Story[] = [
     portrait: '/hanna-renz.jpeg',
     portraitAlt: 'Hanna Renz',
     linkedin: 'https://www.linkedin.com/in/hannarenz',
-  },
+  },**/
 ]
