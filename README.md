@@ -9,11 +9,19 @@ A marketing landing page for [CDTM](https://www.cdtm.com/), built with Vite, Rea
 
 Historically, the share of LMU students per CDTM class has been relatively low. This campaign works against that with a simple yet powerful message. The people featured here were once at LMU, joined CDTM, and now hold inspiring and impactful positions. The campaign is hybrid, with posters on campus, social media, and this landing page.
 
-- **Hero**: The opening line of the campaign
-- **Alumni stories**: Then-and-now chapters for each person
-- **Pattern**: CDTM as the pattern that unites them
-- **CTA**: High-level explanation and CTA
-<br>
+**Hero**: The opening line of the campaign<br>
+<img src="https://github.com/user-attachments/assets/23080fdb-989a-4668-8c4a-40486e1a017a" alt="hero section" width="400" />
+<br><br><br>
+**Alumni stories**: Then-and-now chapters for each person<br>
+<img src="https://github.com/user-attachments/assets/ff385955-101a-4adb-ad7f-f7dc16cd8d35" alt="story example 1" width="400" />
+<img src="https://github.com/user-attachments/assets/0c596593-efd2-47fb-b839-b6a91a62edd2" alt="story example 2" width="400" />
+<br><br><br>
+**Pattern**: CDTM as the pattern that unites them<br>
+<img src="https://github.com/user-attachments/assets/5ec4226e-75f9-495a-8ba9-3b4815ff45ec" alt="pattern" width="400" />
+<br><br><br>
+**CTA**: High-level explanation and CTA<br>
+<img src="https://github.com/user-attachments/assets/93f69623-825e-4f78-8b5b-a36c9a43bd38" alt="cta" width="400" />
+<br><br>
 
 ## Technology
 
